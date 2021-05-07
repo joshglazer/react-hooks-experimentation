@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import logo from "./logo.svg";
 
-function App() {
+export default function App() {
+  const [scale, setScale] = useState(1);
+
+  const styles = {
+    width: scale * 100 + "%",
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={() => {
+            setScale(scale + 1);
+          }}
         >
-          Learn React
-        </a>
+          Make Bigger
+        </button>
+        <button
+          onClick={() => {
+            setScale(scale - 1);
+          }}
+        >
+          Make Smaller
+        </button>
+
+        <img
+          src={logo}
+          className="App-logo"
+          alt="logo"
+          style={styles}
+          onClick={() => {
+            alert("HI");
+            setScale(scale + 1);
+          }}
+        />
       </header>
     </div>
   );
 }
-
-export default App;
